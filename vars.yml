@@ -1,0 +1,7 @@
+personal_access_token: "{{ lookup('env', 'PERSONAL_ACCESS_TOKEN')}}"
+github_user: "jeff-vincent"
+repo_name: "iOS-example"
+user: "jdv"
+group: "staff"
+runner_path: "/Users/jdv/actions-runner"
+

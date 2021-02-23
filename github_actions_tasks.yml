@@ -2,9 +2,9 @@
 
 - name: Get registration token
   uri:
-    url: "https://api.github.com/repos/jeff-vincent/iOS-example/actions/runners/registration-token"
+    url: "https://api.github.com/repos/{{ github_user }}/{{ repo_name }}/actions/runners/registration-token"
     headers:
-      Authorization: "token {{personal_access_token}}"
+      Authorization: "token {{ personal_access_token }}"
       Accept: "application/vnd.github.v3+json"
     method: POST
     status_code: 201
@@ -13,25 +13,25 @@
   run_once: yes
 
 - name: Register runner
-  command: "/Users/jdv/actions-runner/./config.sh --url https://github.com/jeff-vincent/iOS-Example \
-            --token {{ registration.json.token }} --name runner-4"
+  command: "{{ runner_path }}/./config.sh --url https://github.com/{{ github_user }}/{{ repo_name }} \
+            --token {{ registration.json.token }} --name {{ 99999999 | random | to_uuid }}"
   args:
-    chdir: "/Users/jdv/actions-runner"
+    chdir: "{{ runner_path }}"
   become: yes
-  become_user: "jdv"
+  become_user: "{{ user }}"
 
 - name: Install runner as service
-  command: "/Users/jdv/actions-runner/./svc.sh install"
+  command: "{{ runner_path }}/./svc.sh install"
   args:
-    chdir: "/Users/jdv/actions-runner"
+    chdir: "{{ runner_path }}"
   become: yes
-  become_user: "jdv"
+  become_user: "{{ user }}"
 
 - name: Start service
-  command: "/Users/jdv/actions-runner/./svc.sh start"
+  command: "{{ runner_path }}/./svc.sh start"
   args:
-    chdir: "/Users/jdv/actions-runner"
+    chdir: "{{ runner_path }}"
   become: yes
-  become_user: "jdv"
+  become_user: "{{ user }}"
 
 

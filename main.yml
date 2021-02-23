@@ -4,3 +4,5 @@
   connection: local 
   tasks:
   - include: github_actions_tasks.yml
+  vars_files:
+    - vars.yml
