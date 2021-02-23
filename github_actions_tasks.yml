@@ -1,0 +1,37 @@
+---
+
+- name: Get registration token
+  uri:
+    url: "https://api.github.com/repos/jeff-vincent/iOS-example/actions/runners/registration-token"
+    headers:
+      Authorization: "token {{personal_access_token}}"
+      Accept: "application/vnd.github.v3+json"
+    method: POST
+    status_code: 201
+    force_basic_auth: yes
+  register: registration
+  run_once: yes
+
+- name: Register runner
+  command: "/Users/jdv/actions-runner/./config.sh --url https://github.com/jeff-vincent/iOS-Example \
+            --token {{ registration.json.token }} --name runner-4"
+  args:
+    chdir: "/Users/jdv/actions-runner"
+  become: yes
+  become_user: "jdv"
+
+- name: Install runner as service
+  command: "/Users/jdv/actions-runner/./svc.sh install"
+  args:
+    chdir: "/Users/jdv/actions-runner"
+  become: yes
+  become_user: "jdv"
+
+- name: Start service
+  command: "/Users/jdv/actions-runner/./svc.sh start"
+  args:
+    chdir: "/Users/jdv/actions-runner"
+  become: yes
+  become_user: "jdv"
+
+
