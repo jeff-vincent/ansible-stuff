@@ -1,7 +1,9 @@
-personal_access_token: "{{ lookup('env', 'PERSONAL_ACCESS_TOKEN')}}"
+personal_access_token: "{{ lookup('env', 'PERSONAL_ACCESS_TOKEN') }}"
 github_user: "jeff-vincent"
 repo_name: "iOS-example"
 user: "jdv"
 group: "staff"
 runner_path: "/Users/jdv/actions-runner"
+download_url: "https://github.com/actions/runner/releases/download/v2.277.1/actions-runner-osx-x64-2.277.1.tar.gz"
+runner_dest: "actions-runner-osx-x64-2.277.1.tar.gz"
 

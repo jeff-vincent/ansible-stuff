@@ -1,4 +1,27 @@
 ---
+- name: Create runner directory
+  file:
+    path: "{{ runner_path }}"
+    state: directory
+    mode: "0755"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    recurse: yes
+
+- name: Download runner
+  get_url:
+    url: "{{ download_url }}"
+    dest: "{{ runner_path }}/{{ runner_dest }}"
+    force: no
+  run_once: yes
+  become: false
+  delegate_to: localhost
+
+- name: Extract runner
+  shell: "tar xvfz {{ runner_dest }}"
+  args:
+    chdir: "{{ runner_path }}"
+    warn: false
 
 - name: Get registration token
   uri:
