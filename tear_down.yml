@@ -1,0 +1,8 @@
+---
+
+- hosts: localhost
+  connection: local 
+  tasks:
+  - include: tear_down_github_actions_tasks.yml
+  vars_files:
+    - vars.yml

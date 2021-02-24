@@ -3,6 +3,6 @@
 - hosts: localhost
   connection: local 
   tasks:
-  - include: github_actions_tasks.yml
+  - include: setup_github_actions_tasks.yml
   vars_files:
     - vars.yml

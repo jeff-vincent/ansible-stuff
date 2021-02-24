@@ -37,7 +37,7 @@
 
 - name: Register runner
   command: "{{ runner_path }}/./config.sh --url https://github.com/{{ github_user }}/{{ repo_name }} \
-            --token {{ registration.json.token }} --name {{ 99999999 | random | to_uuid }}"
+            --token {{ registration.json.token }} --name {{ ansible_hostname }}"
   args:
     chdir: "{{ runner_path }}"
   become: yes
