@@ -1,5 +1,10 @@
 # GitHub-Actions-Playbook
 
+## To Use
+`export PERSONAL_ACCESS_TOKEN=<your PAT>`
+
+Update values in `vars.yml`.
+
 Dynamically download, register and start a GitHub Actions self-hosted runner.
 
 ## Setup Runner
